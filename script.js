@@ -64,6 +64,7 @@ const fortunes = [
         videoTitle: "気分転換におすすめの音楽"
     }
 
+];
 
 
 // ==========================
@@ -119,9 +120,7 @@ function drawFortune() {
 
     // ボタンを無効化
     fortuneButton.disabled = true;
-
     fortuneButton.style.opacity = "0.5";
-
 
     // おみくじを揺らす
     fortuneBox.classList.remove(
@@ -131,7 +130,6 @@ function drawFortune() {
     fortuneBox.classList.add(
         "shaking"
     );
-
 
     // 結果を一旦隠す
     fortuneText.textContent = "？？？";
@@ -145,43 +143,38 @@ function drawFortune() {
     fortuneComment.textContent =
         "運勢を占っています……";
 
-
-    // 動画も一旦隠す
+    // 動画を一旦非表示
     videoSection.classList.add(
         "hidden"
     );
 
+    // 動画の再生を止める
+    youtubeVideo.src = "";
 
     // 結果を高速で切り替える
     let count = 0;
 
-    const animation =
-        setInterval(() => {
+    const animation = setInterval(() => {
 
-            const randomIndex =
-                Math.floor(
-                    Math.random()
-                    * fortunes.length
-                );
+        const randomIndex =
+            Math.floor(
+                Math.random() * fortunes.length
+            );
 
-            fortuneText.textContent =
-                fortunes[randomIndex].name;
+        fortuneText.textContent =
+            fortunes[randomIndex].name;
 
-            count++;
+        count++;
 
+        // 約1.5秒で終了
+        if (count >= 15) {
 
-            // 1.5秒程度で終了
-            if (count >= 15) {
+            clearInterval(animation);
 
-                clearInterval(
-                    animation
-                );
+            finishFortune();
+        }
 
-                finishFortune();
-            }
-
-        }, 100);
-
+    }, 100);
 }
 
 
@@ -191,11 +184,10 @@ function drawFortune() {
 
 function finishFortune() {
 
-    // 最終結果をランダムに決める
+    // 最終結果をランダムに決定
     const randomIndex =
         Math.floor(
-            Math.random()
-            * fortunes.length
+            Math.random() * fortunes.length
         );
 
     const result =
@@ -212,7 +204,7 @@ function finishFortune() {
     );
 
 
-    // おみくじ結果
+    // 結果表示
     fortuneText.textContent =
         result.name;
 
@@ -234,6 +226,7 @@ function finishFortune() {
         `https://www.youtube.com/embed/${result.videoId}`;
 
 
+    // 動画タイトル
     videoTitle.textContent =
         result.videoTitle;
 
