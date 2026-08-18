@@ -17,6 +17,16 @@ body {
     padding: 40px 0;
 }
 
+.games {
+    display: flex;
+    gap: 25px;
+    align-items: stretch;
+}
+
+.games .card {
+    flex: 1;
+    margin-bottom: 0;
+}
 header {
     text-align: center;
     margin-bottom: 30px;
