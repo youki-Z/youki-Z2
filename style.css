@@ -12,28 +12,18 @@ body {
 
 .container {
     width: 90%;
-    max-width: 800px;
+    max-width: 1000px;
     margin: 0 auto;
     padding: 40px 0;
 }
 
-.games {
-    display: flex;
-    gap: 25px;
-    align-items: stretch;
-}
-
-.games .card {
-    flex: 1;
-    margin-bottom: 0;
-}
 header {
     text-align: center;
     margin-bottom: 30px;
 }
 
 header h1 {
-    margin-bottom: 10px;
+    margin: 0 0 10px;
     font-size: 36px;
 }
 
@@ -42,17 +32,24 @@ header p {
     color: #666;
 }
 
+.games {
+    display: flex;
+    gap: 25px;
+    align-items: stretch;
+}
+
 .card {
     background: rgba(255, 255, 255, 0.95);
     border-radius: 20px;
     padding: 30px;
-    margin-bottom: 25px;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
     text-align: center;
+    flex: 1;
 }
 
 .card h2 {
     margin-top: 0;
+    font-size: 28px;
 }
 
 /* ボタン */
@@ -125,19 +122,19 @@ button:active {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 30px;
+    gap: 25px;
     margin: 25px 0 10px;
 }
 
 .hand-display {
-    width: 120px;
-    height: 120px;
+    width: 100px;
+    height: 100px;
     display: flex;
     justify-content: center;
     align-items: center;
     background: #f4f4f4;
     border-radius: 20px;
-    font-size: 65px;
+    font-size: 55px;
     transition: transform 0.3s;
 }
 
@@ -146,14 +143,14 @@ button:active {
 }
 
 .vs {
-    font-size: 28px;
+    font-size: 24px;
     font-weight: bold;
 }
 
 .hand-labels {
     display: flex;
     justify-content: center;
-    gap: 110px;
+    gap: 80px;
     margin-bottom: 20px;
     font-weight: bold;
 }
@@ -161,25 +158,25 @@ button:active {
 .buttons {
     display: flex;
     justify-content: center;
-    gap: 15px;
+    gap: 12px;
 }
 
 .hand-button {
-    width: 90px;
-    height: 70px;
-    font-size: 35px;
+    width: 75px;
+    height: 65px;
+    font-size: 32px;
     background: #4a90e2;
+    color: white;
 }
 
 .result {
     margin: 25px auto;
-    padding: 18px;
+    padding: 15px;
     border-radius: 12px;
     background: #f0f0f0;
-    font-size: 24px;
+    font-size: 20px;
     font-weight: bold;
     min-height: 32px;
-    transition: 0.3s;
 }
 
 .result.win {
@@ -200,7 +197,7 @@ button:active {
 /* 成績 */
 .stats {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(2, 1fr);
     gap: 10px;
     margin-top: 20px;
 }
@@ -208,7 +205,7 @@ button:active {
 .stats div {
     background: #f7f7f7;
     border-radius: 12px;
-    padding: 15px 5px;
+    padding: 12px 5px;
 }
 
 .stats span {
@@ -219,7 +216,7 @@ button:active {
 }
 
 .stats strong {
-    font-size: 24px;
+    font-size: 22px;
 }
 
 .reset-button {
@@ -265,31 +262,22 @@ button:active {
 
     100% {
         transform: scale(1);
+        opacity: 1;
     }
 }
 
-/* スマートフォン対応 */
-@media (max-width: 600px) {
+/* スマホ */
+@media (max-width: 700px) {
 
-    header h1 {
-        font-size: 26px;
+    .games {
+        flex-direction: column;
     }
 
     .card {
-        padding: 20px;
+        width: 100%;
     }
 
-    .hand-display {
-        width: 90px;
-        height: 90px;
-        font-size: 50px;
-    }
-
-    .hand-labels {
-        gap: 65px;
-    }
-
-    .stats {
-        grid-template-columns: repeat(2, 1fr);
+    header h1 {
+        font-size: 28px;
     }
 }
