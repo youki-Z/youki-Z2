@@ -30,8 +30,8 @@ const fortunes = [
         item: "時計",
         comment: "小さな幸運が見つかるかもしれません。周りをよく見てみましょう。",
 
-        videoId: "GPElJPLBAkw",
-        videoTitle: "リラックス・集中・瞑想向けBGM"
+        videoId: "GPElJPLBAKw",
+        videoTitle: "リラックス・集中向けBGM"
     },
 
     {
@@ -40,8 +40,8 @@ const fortunes = [
         item: "飲み物",
         comment: "焦らず自分のペースで過ごすと良いでしょう。",
 
-        videoId: "jqHTchIhZCE",
-        videoTitle: "癒しBGM・作業用BGM・ストレス解消"
+        videoId: "K8qSRnVVpks",
+        videoTitle: "落ち着いたリラックスBGM"
     },
 
     {
@@ -50,8 +50,8 @@ const fortunes = [
         item: "本",
         comment: "今日は準備の日。無理をせず、明日に備えましょう。",
 
-        videoId: "K8qSRnVVpks",
-        videoTitle: "リラックス・瞑想向けBGM"
+        videoId: "5qap5aO4i9A",
+        videoTitle: "ゆったり聴ける作業用BGM"
     },
 
     {
@@ -60,11 +60,10 @@ const fortunes = [
         item: "ハンカチ",
         comment: "少し慎重に行動しましょう。気分転換をするのもおすすめです。",
 
-        videoId: "K8qSRnVVpks",
-        videoTitle: "リラックス・瞑想向けBGM"
+        videoId: "DWcJFNfaw9c",
+        videoTitle: "気分転換におすすめの音楽"
     }
 
-];
 
 
 // ==========================
