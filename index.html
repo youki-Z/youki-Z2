@@ -9,31 +9,87 @@
 <body>
 
     <div class="container">
-        <h1>じゃんけん・おみくじゲーム</h1>
 
-        <!-- じゃんけん -->
-        <section class="game">
-            <h2>じゃんけん</h2>
-
-            <div class="buttons">
-                <button onclick="playJanken('グー')">✊ グー</button>
-                <button onclick="playJanken('チョキ')">✌️ チョキ</button>
-                <button onclick="playJanken('パー')">✋ パー</button>
-            </div>
-
-            <p id="jankenResult">手を選んでください</p>
-        </section>
+        <header>
+            <h1>じゃんけん・おみくじゲーム</h1>
+            <p>運と実力で今日の運勢を試そう！</p>
+        </header>
 
         <!-- おみくじ -->
-        <section class="game">
+        <section class="card fortune-section">
             <h2>おみくじ</h2>
 
-            <button class="fortune-button" onclick="drawFortune()">
+            <div id="fortuneBox" class="fortune-box">
+                <span id="fortuneText">？？？</span>
+            </div>
+
+            <button id="fortuneButton">
                 おみくじを引く
             </button>
 
-            <p id="fortuneResult">ボタンを押して運勢を占おう！</p>
+            <div id="fortuneInfo" class="fortune-info">
+                <p>ラッキーカラー：---</p>
+                <p>ラッキーアイテム：---</p>
+            </div>
         </section>
+
+        <!-- じゃんけん -->
+        <section class="card janken-section">
+            <h2>じゃんけん</h2>
+
+            <p id="jankenMessage">
+                好きな手を選んでください
+            </p>
+
+            <div class="hands">
+                <div id="playerHand" class="hand-display">？</div>
+                <span class="vs">VS</span>
+                <div id="cpuHand" class="hand-display">？</div>
+            </div>
+
+            <div class="hand-labels">
+                <span>あなた</span>
+                <span>CPU</span>
+            </div>
+
+            <div class="buttons">
+                <button class="hand-button" data-hand="グー">✊</button>
+                <button class="hand-button" data-hand="チョキ">✌️</button>
+                <button class="hand-button" data-hand="パー">✋</button>
+            </div>
+
+            <div id="result" class="result">
+                結果がここに表示されます
+            </div>
+
+            <!-- 成績 -->
+            <div class="stats">
+                <div>
+                    <span>勝ち</span>
+                    <strong id="winCount">0</strong>
+                </div>
+
+                <div>
+                    <span>負け</span>
+                    <strong id="loseCount">0</strong>
+                </div>
+
+                <div>
+                    <span>あいこ</span>
+                    <strong id="drawCount">0</strong>
+                </div>
+
+                <div>
+                    <span>勝率</span>
+                    <strong id="winRate">0%</strong>
+                </div>
+            </div>
+
+            <button id="resetButton" class="reset-button">
+                成績をリセット
+            </button>
+        </section>
+
     </div>
 
     <script src="script.js"></script>
