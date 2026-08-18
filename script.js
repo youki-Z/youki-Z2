@@ -30,8 +30,8 @@ const fortunes = [
         item: "時計",
         comment: "小さな幸運が見つかるかもしれません。周りをよく見てみましょう。",
 
-        videoId: "ic9wJZGjO3k",
-        videoTitle: "心地よい癒しの音楽・リラックスBGM"
+        videoId: "GPElJPLBAkw",
+        videoTitle: "リラックス・集中・瞑想向けBGM"
     },
 
     {
