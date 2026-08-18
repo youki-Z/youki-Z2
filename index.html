@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>じゃんけん・おみくじゲーム</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="container">
+        <h1>じゃんけん・おみくじゲーム</h1>
+
+        <!-- じゃんけん -->
+        <section class="game">
+            <h2>じゃんけん</h2>
+
+            <div class="buttons">
+                <button onclick="playJanken('グー')">✊ グー</button>
+                <button onclick="playJanken('チョキ')">✌️ チョキ</button>
+                <button onclick="playJanken('パー')">✋ パー</button>
+            </div>
+
+            <p id="jankenResult">手を選んでください</p>
+        </section>
+
+        <!-- おみくじ -->
+        <section class="game">
+            <h2>おみくじ</h2>
+
+            <button class="fortune-button" onclick="drawFortune()">
+                おみくじを引く
+            </button>
+
+            <p id="fortuneResult">ボタンを押して運勢を占おう！</p>
+        </section>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
