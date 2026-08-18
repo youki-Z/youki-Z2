@@ -1,358 +1,252 @@
 // ==========================
-// おみくじ
+// おみくじのデータ
 // ==========================
 
 const fortunes = [
+
     {
         name: "大吉",
         color: "赤",
-        item: "新しい靴"
+        item: "新しい靴",
+        comment: "今日は何をしてもうまくいきそう！積極的に行動してみましょう。",
+
+        videoId: "ic9wJZGjO3k",
+        videoTitle: "心地よい癒しの音楽・リラックスBGM"
     },
+
     {
         name: "中吉",
         color: "青",
-        item: "お気に入りの音楽"
+        item: "イヤホン",
+        comment: "落ち着いて行動すると良い一日になりそうです。",
+
+        videoId: "jqHTchIhZCE",
+        videoTitle: "癒しBGM・作業用BGM・ストレス解消"
     },
+
     {
         name: "小吉",
         color: "黄色",
-        item: "時計"
+        item: "時計",
+        comment: "小さな幸運が見つかるかもしれません。周りをよく見てみましょう。",
+
+        videoId: "ic9wJZGjO3k",
+        videoTitle: "心地よい癒しの音楽・リラックスBGM"
     },
+
     {
         name: "吉",
         color: "緑",
-        item: "飲み物"
+        item: "飲み物",
+        comment: "焦らず自分のペースで過ごすと良いでしょう。",
+
+        videoId: "jqHTchIhZCE",
+        videoTitle: "癒しBGM・作業用BGM・ストレス解消"
     },
+
     {
         name: "末吉",
         color: "紫",
-        item: "本"
+        item: "本",
+        comment: "今日は準備の日。無理をせず、明日に備えましょう。",
+
+        videoId: "K8qSRnVVpks",
+        videoTitle: "リラックス・瞑想向けBGM"
     },
+
     {
         name: "凶",
         color: "白",
-        item: "ハンカチ"
+        item: "ハンカチ",
+        comment: "少し慎重に行動しましょう。気分転換をするのもおすすめです。",
+
+        videoId: "K8qSRnVVpks",
+        videoTitle: "リラックス・瞑想向けBGM"
     }
+
 ];
 
-const fortuneButton = document.getElementById("fortuneButton");
-const fortuneBox = document.getElementById("fortuneBox");
-const fortuneText = document.getElementById("fortuneText");
-const fortuneInfo = document.getElementById("fortuneInfo");
 
-fortuneButton.addEventListener("click", drawFortune);
+// ==========================
+// HTML要素を取得
+// ==========================
+
+const fortuneButton =
+    document.getElementById("fortuneButton");
+
+const fortuneBox =
+    document.getElementById("fortuneBox");
+
+const fortuneText =
+    document.getElementById("fortuneText");
+
+const fortuneName =
+    document.getElementById("fortuneName");
+
+const luckyColor =
+    document.getElementById("luckyColor");
+
+const luckyItem =
+    document.getElementById("luckyItem");
+
+const fortuneComment =
+    document.getElementById("fortuneComment");
+
+const videoSection =
+    document.getElementById("videoSection");
+
+const youtubeVideo =
+    document.getElementById("youtubeVideo");
+
+const videoTitle =
+    document.getElementById("videoTitle");
+
+
+// ==========================
+// おみくじボタン
+// ==========================
+
+fortuneButton.addEventListener(
+    "click",
+    drawFortune
+);
+
+
+// ==========================
+// おみくじ
+// ==========================
 
 function drawFortune() {
 
+    // ボタンを無効化
     fortuneButton.disabled = true;
+
     fortuneButton.style.opacity = "0.5";
 
-    fortuneBox.classList.remove("result-animation");
-    fortuneBox.classList.add("shaking");
 
+    // おみくじを揺らす
+    fortuneBox.classList.remove(
+        "result-animation"
+    );
+
+    fortuneBox.classList.add(
+        "shaking"
+    );
+
+
+    // 結果を一旦隠す
     fortuneText.textContent = "？？？";
 
-    fortuneInfo.innerHTML = `
-        <p>ラッキーカラー：---</p>
-        <p>ラッキーアイテム：---</p>
-    `;
+    fortuneName.textContent = "---";
 
-    // 数回表示を変えて演出
+    luckyColor.textContent = "---";
+
+    luckyItem.textContent = "---";
+
+    fortuneComment.textContent =
+        "運勢を占っています……";
+
+
+    // 動画も一旦隠す
+    videoSection.classList.add(
+        "hidden"
+    );
+
+
+    // 結果を高速で切り替える
     let count = 0;
 
-    const animation = setInterval(() => {
+    const animation =
+        setInterval(() => {
 
-        const randomIndex =
-            Math.floor(Math.random() * fortunes.length);
+            const randomIndex =
+                Math.floor(
+                    Math.random()
+                    * fortunes.length
+                );
 
-        fortuneText.textContent =
-            fortunes[randomIndex].name;
+            fortuneText.textContent =
+                fortunes[randomIndex].name;
 
-        count++;
+            count++;
 
-        if (count >= 12) {
-            clearInterval(animation);
-            finishFortune();
-        }
 
-    }, 100);
+            // 1.5秒程度で終了
+            if (count >= 15) {
 
-    function finishFortune() {
+                clearInterval(
+                    animation
+                );
 
-        const randomIndex =
-            Math.floor(Math.random() * fortunes.length);
+                finishFortune();
+            }
 
-        const result = fortunes[randomIndex];
+        }, 100);
 
-        fortuneBox.classList.remove("shaking");
-        fortuneBox.classList.add("result-animation");
-
-        fortuneText.textContent = result.name;
-
-        fortuneInfo.innerHTML = `
-            <p>ラッキーカラー：${result.color}</p>
-            <p>ラッキーアイテム：${result.item}</p>
-        `;
-
-        fortuneButton.disabled = false;
-        fortuneButton.style.opacity = "1";
-    }
 }
 
 
 // ==========================
-// じゃんけん
+// 結果を表示
 // ==========================
 
-const handButtons =
-    document.querySelectorAll(".hand-button");
+function finishFortune() {
 
-const playerHand =
-    document.getElementById("playerHand");
+    // 最終結果をランダムに決める
+    const randomIndex =
+        Math.floor(
+            Math.random()
+            * fortunes.length
+        );
 
-const cpuHand =
-    document.getElementById("cpuHand");
-
-const resultText =
-    document.getElementById("result");
-
-const jankenMessage =
-    document.getElementById("jankenMessage");
-
-const winCount =
-    document.getElementById("winCount");
-
-const loseCount =
-    document.getElementById("loseCount");
-
-const drawCount =
-    document.getElementById("drawCount");
-
-const winRate =
-    document.getElementById("winRate");
-
-const resetButton =
-    document.getElementById("resetButton");
+    const result =
+        fortunes[randomIndex];
 
 
-// 成績
-let wins = 0;
-let loses = 0;
-let draws = 0;
+    // アニメーション変更
+    fortuneBox.classList.remove(
+        "shaking"
+    );
+
+    fortuneBox.classList.add(
+        "result-animation"
+    );
 
 
-// 手の絵文字
-const handIcons = {
-    "グー": "✊",
-    "チョキ": "✌️",
-    "パー": "✋"
-};
+    // おみくじ結果
+    fortuneText.textContent =
+        result.name;
+
+    fortuneName.textContent =
+        result.name;
+
+    luckyColor.textContent =
+        result.color;
+
+    luckyItem.textContent =
+        result.item;
+
+    fortuneComment.textContent =
+        result.comment;
 
 
-// ボタンイベント
-handButtons.forEach(button => {
-
-    button.addEventListener("click", () => {
-
-        const selectedHand =
-            button.dataset.hand;
-
-        playJanken(selectedHand);
-    });
-});
+    // 動画を設定
+    youtubeVideo.src =
+        `https://www.youtube.com/embed/${result.videoId}`;
 
 
-// じゃんけん本体
-function playJanken(selectedHand) {
-
-    // 連打防止
-    setButtonsDisabled(true);
-
-    // 初期化
-    resultText.textContent = "じゃんけん……";
-    resultText.className = "result";
-
-    playerHand.textContent =
-        handIcons[selectedHand];
-
-    cpuHand.textContent = "❓";
-
-    jankenMessage.textContent =
-        "CPUが手を考えています……";
+    videoTitle.textContent =
+        result.videoTitle;
 
 
-    // プレイヤー側のアニメーション
-    playerHand.classList.remove("active");
-
-    void playerHand.offsetWidth;
-
-    playerHand.classList.add("active");
+    // 動画を表示
+    videoSection.classList.remove(
+        "hidden"
+    );
 
 
-    // CPUの手を遅れて表示
-    setTimeout(() => {
+    // ボタンを再び有効化
+    fortuneButton.disabled = false;
 
-        cpuHand.textContent = "✊";
-
-        setTimeout(() => {
-
-            cpuHand.textContent = "✌️";
-
-            setTimeout(() => {
-
-                cpuHand.textContent = "✋";
-
-                setTimeout(() => {
-
-                    finishJanken(selectedHand);
-
-                }, 400);
-
-            }, 400);
-
-        }, 400);
-
-    }, 400);
+    fortuneButton.style.opacity = "1";
 }
-
-
-// 勝敗判定
-function finishJanken(player) {
-
-    const hands = [
-        "グー",
-        "チョキ",
-        "パー"
-    ];
-
-    const cpu =
-        hands[Math.floor(Math.random() * hands.length)];
-
-    cpuHand.textContent =
-        handIcons[cpu];
-
-    cpuHand.classList.remove("active");
-
-    void cpuHand.offsetWidth;
-
-    cpuHand.classList.add("active");
-
-
-    let result;
-
-    if (player === cpu) {
-
-        result = "draws";
-        draws++;
-
-    } else if (
-        (player === "グー" && cpu === "チョキ") ||
-        (player === "チョキ" && cpu === "パー") ||
-        (player === "パー" && cpu === "グー")
-    ) {
-
-        result = "wins";
-        wins++;
-
-    } else {
-
-        result = "loses";
-        loses++;
-    }
-
-
-    // 結果表示
-    if (result === "wins") {
-
-        resultText.textContent =
-            "あなたの勝ち！";
-
-        resultText.classList.add("win");
-
-        jankenMessage.textContent =
-            "おめでとうございます！";
-
-    } else if (result === "loses") {
-
-        resultText.textContent =
-            "あなたの負け……";
-
-        resultText.classList.add("lose");
-
-        jankenMessage.textContent =
-            "次は勝てるかも！";
-
-    } else {
-
-        resultText.textContent =
-            "あいこ！";
-
-        resultText.classList.add("draw");
-
-        jankenMessage.textContent =
-            "もう一度挑戦しましょう！";
-    }
-
-
-    updateStats();
-
-    setButtonsDisabled(false);
-}
-
-
-// 成績更新
-function updateStats() {
-
-    winCount.textContent = wins;
-    loseCount.textContent = loses;
-    drawCount.textContent = draws;
-
-    const totalGames =
-        wins + loses + draws;
-
-    if (totalGames === 0) {
-
-        winRate.textContent = "0%";
-
-    } else {
-
-        const rate =
-            (wins / totalGames) * 100;
-
-        winRate.textContent =
-            `${rate.toFixed(1)}%`;
-    }
-}
-
-
-// ボタンの有効・無効
-function setButtonsDisabled(disabled) {
-
-    handButtons.forEach(button => {
-        button.disabled = disabled;
-        button.style.opacity =
-            disabled ? "0.5" : "1";
-    });
-}
-
-
-// 成績リセット
-resetButton.addEventListener("click", () => {
-
-    wins = 0;
-    loses = 0;
-    draws = 0;
-
-    updateStats();
-
-    playerHand.textContent = "？";
-    cpuHand.textContent = "？";
-
-    resultText.textContent =
-        "結果がここに表示されます";
-
-    resultText.className = "result";
-
-    jankenMessage.textContent =
-        "好きな手を選んでください";
-});
