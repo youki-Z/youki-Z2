@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>じゃんけん・おみくじゲーム</title>
 
-    <!-- CSS -->
+    <title>今日のおみくじ</title>
+
     <link rel="stylesheet" href="style.css">
 </head>
 
@@ -14,14 +14,15 @@
     <div class="container">
 
         <header>
-            <h1>じゃんけん・おみくじゲーム</h1>
-            <p>運と実力で今日の運勢を試そう！</p>
+            <h1>今日のおみくじ</h1>
+            <p>あなたの今日の運勢を占ってみよう！</p>
         </header>
 
-        <div class="games">
+        <main>
 
             <!-- おみくじ -->
             <section class="card fortune-section">
+
                 <h2>おみくじ</h2>
 
                 <div id="fortuneBox" class="fortune-box">
@@ -32,107 +33,65 @@
                     おみくじを引く
                 </button>
 
-                <div id="fortuneInfo" class="fortune-info">
-                    <p>ラッキーカラー：---</p>
-                    <p>ラッキーアイテム：---</p>
+                <!-- 結果 -->
+                <div id="fortuneResult" class="fortune-result">
+
+                    <p>
+                        運勢：
+                        <strong id="fortuneName">---</strong>
+                    </p>
+
+                    <p>
+                        ラッキーカラー：
+                        <strong id="luckyColor">---</strong>
+                    </p>
+
+                    <p>
+                        ラッキーアイテム：
+                        <strong id="luckyItem">---</strong>
+                    </p>
+
+                    <p id="fortuneComment">
+                        おみくじを引いてみましょう！
+                    </p>
+
                 </div>
+
             </section>
 
 
-            <!-- じゃんけん -->
-            <section class="card janken-section">
-                <h2>じゃんけん</h2>
+            <!-- おすすめ動画 -->
+            <section
+                id="videoSection"
+                class="card video-section hidden">
 
-                <p id="jankenMessage">
-                    好きな手を選んでください
+                <h2>あなたへのおすすめ動画</h2>
+
+                <p id="videoDescription">
+                    今日の運勢に合わせた動画です。
                 </p>
 
-                <div class="hands">
+                <div class="video-container">
 
-                    <div id="playerHand" class="hand-display">
-                        ？
-                    </div>
-
-                    <span class="vs">VS</span>
-
-                    <div id="cpuHand" class="hand-display">
-                        ？
-                    </div>
-
-                </div>
-
-                <div class="hand-labels">
-                    <span>あなた</span>
-                    <span>CPU</span>
-                </div>
-
-                <div class="buttons">
-
-                    <button
-                        class="hand-button"
-                        data-hand="グー">
-                        ✊
-                    </button>
-
-                    <button
-                        class="hand-button"
-                        data-hand="チョキ">
-                        ✌️
-                    </button>
-
-                    <button
-                        class="hand-button"
-                        data-hand="パー">
-                        ✋
-                    </button>
+                    <iframe
+                        id="youtubeVideo"
+                        src=""
+                        title="おすすめ動画"
+                        frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        allowfullscreen>
+                    </iframe>
 
                 </div>
 
-                <div id="result" class="result">
-                    結果がここに表示されます
-                </div>
-
-
-                <!-- 成績 -->
-                <div class="stats">
-
-                    <div>
-                        <span>勝ち</span>
-                        <strong id="winCount">0</strong>
-                    </div>
-
-                    <div>
-                        <span>負け</span>
-                        <strong id="loseCount">0</strong>
-                    </div>
-
-                    <div>
-                        <span>あいこ</span>
-                        <strong id="drawCount">0</strong>
-                    </div>
-
-                    <div>
-                        <span>勝率</span>
-                        <strong id="winRate">0%</strong>
-                    </div>
-
-                </div>
-
-
-                <button
-                    id="resetButton"
-                    class="reset-button">
-                    成績をリセット
-                </button>
+                <p id="videoTitle"></p>
 
             </section>
 
-        </div>
+        </main>
 
     </div>
 
-
-    <!-- JavaScript -->
     <script src="script.js"></script>
 
 </body>
