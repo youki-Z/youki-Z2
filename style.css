@@ -1,61 +1,285 @@
+* {
+    box-sizing: border-box;
+}
+
 body {
-    font-family: Arial, sans-serif;
     margin: 0;
-    background: #f2f7ff;
+    font-family: Arial, "Hiragino Kaku Gothic ProN", sans-serif;
+    background: linear-gradient(135deg, #dff3ff, #f8e8ff);
     color: #333;
+    min-height: 100vh;
 }
 
 .container {
     width: 90%;
-    max-width: 700px;
-    margin: 40px auto;
-    text-align: center;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 40px 0;
 }
 
-h1 {
+header {
+    text-align: center;
     margin-bottom: 30px;
 }
 
-.game {
-    background: white;
-    margin-bottom: 25px;
-    padding: 25px;
-    border-radius: 15px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+header h1 {
+    margin-bottom: 10px;
+    font-size: 36px;
 }
 
-h2 {
+header p {
+    margin: 0;
+    color: #666;
+}
+
+.card {
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 20px;
+    padding: 30px;
+    margin-bottom: 25px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+    text-align: center;
+}
+
+.card h2 {
     margin-top: 0;
+}
+
+/* ボタン */
+button {
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    transition:
+        transform 0.2s,
+        box-shadow 0.2s,
+        opacity 0.2s;
+}
+
+button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+button:active {
+    transform: scale(0.95);
+}
+
+/* おみくじ */
+.fortune-box {
+    width: 180px;
+    height: 180px;
+    margin: 20px auto;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #ffcc70, #ff8177);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 32px;
+    font-weight: bold;
+    color: white;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.18);
+}
+
+.fortune-box.shaking {
+    animation: shake 0.12s infinite;
+}
+
+.fortune-box.result-animation {
+    animation: pop 0.5s;
+}
+
+#fortuneButton {
+    background: #ff8c42;
+    color: white;
+    padding: 14px 28px;
+    font-size: 18px;
+}
+
+.fortune-info {
+    margin-top: 20px;
+    line-height: 1.7;
+}
+
+/* じゃんけん */
+.janken-section {
+    overflow: hidden;
+}
+
+#jankenMessage {
+    font-size: 18px;
+    min-height: 28px;
+}
+
+.hands {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    margin: 25px 0 10px;
+}
+
+.hand-display {
+    width: 120px;
+    height: 120px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #f4f4f4;
+    border-radius: 20px;
+    font-size: 65px;
+    transition: transform 0.3s;
+}
+
+.hand-display.active {
+    animation: pop 0.4s;
+}
+
+.vs {
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.hand-labels {
+    display: flex;
+    justify-content: center;
+    gap: 110px;
+    margin-bottom: 20px;
+    font-weight: bold;
 }
 
 .buttons {
     display: flex;
     justify-content: center;
-    gap: 10px;
-    flex-wrap: wrap;
+    gap: 15px;
 }
 
-button {
-    padding: 12px 20px;
-    font-size: 16px;
-    border: none;
-    border-radius: 8px;
+.hand-button {
+    width: 90px;
+    height: 70px;
+    font-size: 35px;
     background: #4a90e2;
-    color: white;
-    cursor: pointer;
 }
 
-button:hover {
-    opacity: 0.8;
-}
-
-.fortune-button {
-    background: #e67e22;
-}
-
-#jankenResult,
-#fortuneResult {
-    margin-top: 20px;
-    font-size: 20px;
+.result {
+    margin: 25px auto;
+    padding: 18px;
+    border-radius: 12px;
+    background: #f0f0f0;
+    font-size: 24px;
     font-weight: bold;
+    min-height: 32px;
+    transition: 0.3s;
+}
+
+.result.win {
+    background: #d8f8d8;
+    color: #218838;
+}
+
+.result.lose {
+    background: #ffdcdc;
+    color: #c82333;
+}
+
+.result.draw {
+    background: #fff4c2;
+    color: #856404;
+}
+
+/* 成績 */
+.stats {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.stats div {
+    background: #f7f7f7;
+    border-radius: 12px;
+    padding: 15px 5px;
+}
+
+.stats span {
+    display: block;
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 5px;
+}
+
+.stats strong {
+    font-size: 24px;
+}
+
+.reset-button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    background: #777;
+    color: white;
+}
+
+/* アニメーション */
+@keyframes shake {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    25% {
+        transform: rotate(-8deg);
+    }
+
+    50% {
+        transform: rotate(8deg);
+    }
+
+    75% {
+        transform: rotate(-8deg);
+    }
+
+    100% {
+        transform: rotate(0deg);
+    }
+}
+
+@keyframes pop {
+    0% {
+        transform: scale(0.6);
+        opacity: 0;
+    }
+
+    70% {
+        transform: scale(1.1);
+        opacity: 1;
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+/* スマートフォン対応 */
+@media (max-width: 600px) {
+
+    header h1 {
+        font-size: 26px;
+    }
+
+    .card {
+        padding: 20px;
+    }
+
+    .hand-display {
+        width: 90px;
+        height: 90px;
+        font-size: 50px;
+    }
+
+    .hand-labels {
+        gap: 65px;
+    }
+
+    .stats {
+        grid-template-columns: repeat(2, 1fr);
+    }
 }
