@@ -4,89 +4,114 @@
 
 body {
     margin: 0;
-    font-family: Arial, "Hiragino Kaku Gothic ProN", sans-serif;
-    background: linear-gradient(135deg, #dff3ff, #f8e8ff);
-    color: #333;
     min-height: 100vh;
+
+    font-family:
+        Arial,
+        "Hiragino Kaku Gothic ProN",
+        "Yu Gothic",
+        sans-serif;
+
+    background:
+        linear-gradient(
+            135deg,
+            #dff3ff,
+            #f8e8ff
+        );
+
+    color: #333;
 }
 
 .container {
     width: 90%;
-    max-width: 1000px;
+    max-width: 900px;
+
     margin: 0 auto;
+
     padding: 40px 0;
 }
 
+
+/* ヘッダー */
+
 header {
     text-align: center;
+
     margin-bottom: 30px;
 }
 
 header h1 {
     margin: 0 0 10px;
-    font-size: 36px;
+
+    font-size: 38px;
 }
 
 header p {
     margin: 0;
+
     color: #666;
+
+    font-size: 16px;
 }
 
-.games {
-    display: flex;
-    gap: 25px;
-    align-items: stretch;
-}
+
+/* カード */
 
 .card {
     background: rgba(255, 255, 255, 0.95);
+
     border-radius: 20px;
+
     padding: 30px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+
+    margin-bottom: 25px;
+
+    box-shadow:
+        0 10px 30px rgba(0, 0, 0, 0.12);
+
     text-align: center;
-    flex: 1;
 }
 
 .card h2 {
     margin-top: 0;
+
     font-size: 28px;
 }
 
-/* ボタン */
-button {
-    border: none;
-    border-radius: 12px;
-    cursor: pointer;
-    transition:
-        transform 0.2s,
-        box-shadow 0.2s,
-        opacity 0.2s;
-}
-
-button:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
-}
-
-button:active {
-    transform: scale(0.95);
-}
 
 /* おみくじ */
+
 .fortune-box {
-    width: 180px;
-    height: 180px;
-    margin: 20px auto;
+    width: 190px;
+    height: 190px;
+
+    margin: 25px auto;
+
     border-radius: 50%;
-    background: linear-gradient(135deg, #ffcc70, #ff8177);
+
+    background:
+        linear-gradient(
+            135deg,
+            #ffcc70,
+            #ff8177
+        );
+
     display: flex;
-    align-items: center;
+
     justify-content: center;
-    font-size: 32px;
-    font-weight: bold;
+    align-items: center;
+
     color: white;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.18);
+
+    font-size: 36px;
+    font-weight: bold;
+
+    box-shadow:
+        0 8px 20px rgba(0, 0, 0, 0.18);
 }
+
+
+/* おみくじアニメーション */
 
 .fortune-box.shaking {
     animation: shake 0.12s infinite;
@@ -96,138 +121,117 @@ button:active {
     animation: pop 0.5s;
 }
 
+
+/* ボタン */
+
+button {
+    border: none;
+
+    border-radius: 12px;
+
+    cursor: pointer;
+
+    transition:
+        transform 0.2s,
+        box-shadow 0.2s,
+        opacity 0.2s;
+}
+
+button:hover {
+    transform: translateY(-3px);
+
+    box-shadow:
+        0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+button:active {
+    transform: scale(0.95);
+}
+
 #fortuneButton {
-    background: #ff8c42;
-    color: white;
-    padding: 14px 28px;
+    padding: 14px 30px;
+
     font-size: 18px;
-}
 
-.fortune-info {
-    margin-top: 20px;
-    line-height: 1.7;
-}
-
-/* じゃんけん */
-.janken-section {
-    overflow: hidden;
-}
-
-#jankenMessage {
-    font-size: 18px;
-    min-height: 28px;
-}
-
-.hands {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 25px;
-    margin: 25px 0 10px;
-}
-
-.hand-display {
-    width: 100px;
-    height: 100px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background: #f4f4f4;
-    border-radius: 20px;
-    font-size: 55px;
-    transition: transform 0.3s;
-}
-
-.hand-display.active {
-    animation: pop 0.4s;
-}
-
-.vs {
-    font-size: 24px;
-    font-weight: bold;
-}
-
-.hand-labels {
-    display: flex;
-    justify-content: center;
-    gap: 80px;
-    margin-bottom: 20px;
-    font-weight: bold;
-}
-
-.buttons {
-    display: flex;
-    justify-content: center;
-    gap: 12px;
-}
-
-.hand-button {
-    width: 75px;
-    height: 65px;
-    font-size: 32px;
     background: #4a90e2;
+
     color: white;
 }
 
-.result {
-    margin: 25px auto;
-    padding: 15px;
-    border-radius: 12px;
-    background: #f0f0f0;
+
+/* 結果 */
+
+.fortune-result {
+    margin-top: 25px;
+
+    line-height: 1.8;
+
+    font-size: 17px;
+}
+
+.fortune-result strong {
     font-size: 20px;
+}
+
+#fortuneComment {
+    margin-top: 20px;
+
+    font-size: 18px;
     font-weight: bold;
-    min-height: 32px;
 }
 
-.result.win {
-    background: #d8f8d8;
-    color: #218838;
+
+/* 動画 */
+
+.video-section {
+    animation: slideUp 0.6s;
 }
 
-.result.lose {
-    background: #ffdcdc;
-    color: #c82333;
+.video-section.hidden {
+    display: none;
 }
 
-.result.draw {
-    background: #fff4c2;
-    color: #856404;
-}
+.video-container {
+    position: relative;
 
-/* 成績 */
-.stats {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 10px;
+    width: 100%;
+
+    padding-bottom: 56.25%;
+
+    height: 0;
+
+    overflow: hidden;
+
+    border-radius: 15px;
+
     margin-top: 20px;
 }
 
-.stats div {
-    background: #f7f7f7;
-    border-radius: 12px;
-    padding: 12px 5px;
+.video-container iframe {
+    position: absolute;
+
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 100%;
+
+    border: 0;
 }
 
-.stats span {
-    display: block;
-    font-size: 14px;
-    color: #666;
-    margin-bottom: 5px;
+#videoTitle {
+    margin-top: 15px;
+
+    font-weight: bold;
+
+    font-size: 18px;
 }
 
-.stats strong {
-    font-size: 22px;
-}
-
-.reset-button {
-    margin-top: 20px;
-    padding: 10px 20px;
-    background: #777;
-    color: white;
-}
 
 /* アニメーション */
+
 @keyframes shake {
+
     0% {
         transform: rotate(0deg);
     }
@@ -249,35 +253,65 @@ button:active {
     }
 }
 
+
 @keyframes pop {
+
     0% {
         transform: scale(0.6);
+
         opacity: 0;
     }
 
     70% {
         transform: scale(1.1);
+
         opacity: 1;
     }
 
     100% {
         transform: scale(1);
+
         opacity: 1;
     }
 }
 
-/* スマホ */
-@media (max-width: 700px) {
 
-    .games {
-        flex-direction: column;
+@keyframes slideUp {
+
+    0% {
+        transform: translateY(30px);
+
+        opacity: 0;
     }
 
-    .card {
-        width: 100%;
+    100% {
+        transform: translateY(0);
+
+        opacity: 1;
+    }
+}
+
+
+/* スマートフォン */
+
+@media (max-width: 600px) {
+
+    .container {
+        width: 94%;
     }
 
     header h1 {
-        font-size: 28px;
+        font-size: 30px;
+    }
+
+    .card {
+        padding: 20px;
+    }
+
+    .fortune-box {
+        width: 160px;
+        height: 160px;
+
+        font-size: 30px;
     }
 }
